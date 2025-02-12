@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Wine Model Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      background: #fff;
+      margin: auto;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    input[type="number"] {
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    input[type="submit"] {
+      background: #5563DE;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+    }
+    input[type="submit"]:hover {
+      background: #4555c9;
+    }
+    .prediction {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Enter Wine Features</h2>
+    <form action="/" method="post">
+      <!-- Alcohol -->
+      <label for="alcohol">Alcohol (min: 11.03, max: 14.83):</label>
+      <input type="number" id="alcohol" name="alcohol" step="any" min="11.03" max="14.83" required>
+
+      <!-- Malic Acid -->
+      <label for="malic_acid">Malic Acid (min: 0.74, max: 5.80):</label>
+      <input type="number" id="malic_acid" name="malic_acid" step="any" min="0.74" max="5.80" required>
+
+      <!-- Ash -->
+      <label for="ash">Ash (min: 1.36, max: 3.23):</label>
+      <input type="number" id="ash" name="ash" step="any" min="1.36" max="3.23" required>
+
+      <!-- Alcalinity of Ash -->
+      <label for="alcalinity_of_ash">Alcalinity of Ash (min: 10.60, max: 30.00):</label>
+      <input type="number" id="alcalinity_of_ash" name="alcalinity_of_ash" step="any" min="10.60" max="30.00" required>
+
+      <!-- Magnesium -->
+      <label for="magnesium">Magnesium (min: 70.00, max: 162.00):</label>
+      <input type="number" id="magnesium" name="magnesium" step="any" min="70" max="162" required>
+
+      <!-- Total Phenols -->
+      <label for="total_phenols">Total Phenols (min: 0.98, max: 3.88):</label>
+      <input type="number" id="total_phenols" name="total_phenols" step="any" min="0.98" max="3.88" required>
+
+      <!-- Flavanoids -->
+      <label for="flavanoids">Flavanoids (min: 0.34, max: 5.08):</label>
+      <input type="number" id="flavanoids" name="flavanoids" step="any" min="0.34" max="5.08" required>
+
+      <!-- Nonflavanoid Phenols -->
+      <label for="nonflavanoid_phenols">Nonflavanoid Phenols (min: 0.13, max: 0.66):</label>
+      <input type="number" id="nonflavanoid_phenols" name="nonflavanoid_phenols" step="any" min="0.13" max="0.66" required>
+
+      <!-- Proanthocyanins -->
+      <label for="proanthocyanins">Proanthocyanins (min: 0.41, max: 3.58):</label>
+      <input type="number" id="proanthocyanins" name="proanthocyanins" step="any" min="0.41" max="3.58" required>
+
+      <!-- Color Intensity -->
+      <label for="color_intensity">Color Intensity (min: 1.28, max: 13.00):</label>
+      <input type="number" id="color_intensity" name="color_intensity" step="any" min="1.28" max="13.00" required>
+
+      <!-- Hue -->
+      <label for="hue">Hue (min: 0.48, max: 1.71):</label>
+      <input type="number" id="hue" name="hue" step="any" min="0.48" max="1.71" required>
+
+      <!-- OD280/OD315 of Diluted Wines -->
+      <label for="od280/od315_of_diluted_wines">OD280/OD315 of Diluted Wines (min: 1.27, max: 4.00):</label>
+      <input type="number" id="od280/od315_of_diluted_wines" name="od280/od315_of_diluted_wines" step="any" min="1.27" max="4.00" required>
+
+      <!-- Proline -->
+      <label for="proline">Proline (min: 278, max: 1680):</label>
+      <input type="number" id="proline" name="proline" step="any" min="278" max="1680" required>
+
+      <input type="submit" value="Predict">
+    </form>
+
+    <!-- Display Prediction (if available) -->
+    {% if prediction %}
+      <div class="prediction">
+        <h3>Prediction: {{ prediction }}</h3>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
